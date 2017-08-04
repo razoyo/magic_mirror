@@ -1,0 +1,18 @@
+<app-welcome *ngIf="!currState.product_available"
+  (customerSessionStart) = "customerSessionStart()"
+></app-welcome>
+
+<div *ngIf="currState.product_available" class="main">
+
+  <app-product
+    [product]="product"
+    (buyProduct)="buyProduct(url)"
+  ></app-product>
+
+  <app-photo-mgr
+    [photos]="photos"
+    (takePhoto)="takePhoto()"
+    (sharePhotos)="sharePhotos(photos)"
+  ></app-photo-mgr>
+
+</div>

@@ -1,0 +1,10 @@
+@font-face {
+  font-family: PoiretOne;
+  src: url('./assets/PoiretOne-Regular.ttf');
+  }
+
+body {
+  font-family: PoiretOne, sans-serif;
+  background: #000000;
+  color: #ffffff;
+  }
