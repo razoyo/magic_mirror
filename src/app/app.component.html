@@ -1,5 +1,6 @@
 <app-welcome *ngIf="!currState.product_available"
   (customerSessionStart) = "customerSessionStart()"
+  (scanCode) = "scanCode($event)"
 ></app-welcome>
 
 <div *ngIf="currState.product_available" class="main">

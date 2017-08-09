@@ -42,6 +42,10 @@ export class AppComponent implements OnInit {
     this.currState.customer_present = value;
     }
 
+  scanCode(barcode) {
+    console.log("barcode scan" , " " , barcode);
+    }
+
   ngOnInit() {
     this.currState = Object.create(stateInit);   
     }

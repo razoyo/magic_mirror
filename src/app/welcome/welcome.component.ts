@@ -7,7 +7,11 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 })
 export class WelcomeComponent implements OnInit {
   @Output() customerSessionStart = new EventEmitter<any>();
+  @Output() scanCode = new EventEmitter<number>();
   customerPresent: boolean = false;
+
+  scanInputOpen: boolean = false;
+  barcodeToFind: number;
 
   customerPushedButton() {
     this.customerPresent = true;
@@ -17,6 +21,15 @@ export class WelcomeComponent implements OnInit {
     this.customerSessionStart.emit();
     }
   
+  customerRequestedScan() {
+    this.scanInputOpen = true;
+  }
+
+  scanComplete() {
+    this.scanInputOpen = false;
+    this.scanCode.emit(this.barcodeToFind);
+    }
+
   constructor() { }
 
   ngOnInit() {
