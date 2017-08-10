@@ -1,0 +1,17 @@
+.share-buttons {
+  display: flex;
+  flex-direction: column;
+  }
+
+ul {
+  padding: 0;
+  list-style: none;
+}
+
+li {
+  margin: 10px;
+  }
+
+li > img {
+  max-width: 300px;
+  }

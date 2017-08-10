@@ -6,8 +6,8 @@ import { stateInit } from './shared/stateInit';
 
 //mock data area
 let photos = [
-    "photo1.jpg",
-    "photo2.jpg"
+    "hat1.jpg",
+    "hat2.jpg"
   ];
 
 let fake_product = {
@@ -24,6 +24,7 @@ let fake_product = {
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
+
 export class AppComponent implements OnInit {
   photos:string[] = photos;
   product: ProductType = fake_product;
@@ -31,19 +32,20 @@ export class AppComponent implements OnInit {
 
   takePhoto() {
     console.log("photo button pushed");
-  }
+    }
 
   sharePhotos(photos) {
-  console.log("share button pushed ", photos);
-  }
+    console.log("share button pushed ", photos);
+    }
 
-  customerSessionStart(value) {
+  customerSessionStart() {
     console.log("customer now present");
-    this.currState.customer_present = value;
+    this.currState.customer_present = true;
     }
 
   scanCode(barcode) {
     console.log("barcode scan" , " " , barcode);
+    this.currState.product_available = true;
     }
 
   ngOnInit() {

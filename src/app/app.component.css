@@ -1,0 +1,35 @@
+app-product, app-photo-mgr {
+  display: flex;
+  flex-direction: column;
+  height: 100%;    
+  align-item: flex-end; 
+  }
+
+h3 {
+  font-size: 2em;
+  }
+
+.main {
+  height: 100%;
+  }
+
+div.main {
+  display: flex;
+  justify-content: space-between;
+  }
+
+.top {
+  align-self: flex-start;
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  }
+
+.bottom {
+  align-self: flex-end;
+  display: flex;
+  padding: 25px;
+  flex-direction: column;
+  width: 80%;
+  }
+

@@ -1,6 +1,10 @@
-<ul>
-<li *ngFor="let photo of photos">{{photo}}</li>
-</ul>
+<div class="top">
+  <ul>
+  <li *ngFor="let photo of photos"><img src="assets/customer-photos/{{photo}}"></li>
+  </ul>
+</div>
 
-<button (click)="pushTakePhoto()">Take Photo</button>
-<button (click)="pushSharePhotos()">Share Photos</button>
+<div class="bottom share-buttons">
+  <button (click)="pushTakePhoto()">Take Photo</button>
+  <button (click)="pushSharePhotos()">Share Photos</button>
+</div>

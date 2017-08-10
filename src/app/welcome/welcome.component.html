@@ -1,7 +1,6 @@
-<button *ngIf="!customerPresent" (click)="customerPushedButton()"></button>
+<button *ngIf="!customerPresent" (click)="customerPushedButton()">Start</button>
 <div *ngIf="customerPresent">
-<h1>Welcome to Hat Manager</h1>
-<h2>Scan a UPC Code to Shop or Share</h2>
-<button *ngIf="!scanInputOpen" (click)="customerRequestedScan()">Scan</button>
+  <h1>Welcome to Hat Manager</h1>
+  <h2>Scan a UPC Code to Shop or Share</h2>
+  <input [(ngModel)]="barcodeToFind" (keyup.enter)="scanComplete(barcodeToFind)" placeholder="Touch Here To Scan">
 </div>
-<input *ngIf="scanInputOpen" [(ngModel)]="barcodeToFind" (keyup.enter)="scanComplete()">

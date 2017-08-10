@@ -4,7 +4,7 @@ import { Observable } from 'rxjs/Observable';
 @Component({
   selector: 'app-photo-mgr',
   templateUrl: './photo-mgr.component.html',
-  styleUrls: ['./photo-mgr.component.css']
+  styleUrls: ['./photo-mgr.component.css', '../app.component.css']
 })
 export class PhotoMgrComponent implements OnInit {
   @Input() photos:string[];

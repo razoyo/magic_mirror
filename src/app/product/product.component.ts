@@ -5,7 +5,7 @@ import { ProductType } from '../shared/product';
 @Component({
   selector: 'app-product',
   templateUrl: './product.component.html',
-  styleUrls: ['./product.component.css']
+  styleUrls: ['./product.component.css', '../app.component.css']
 })
 export class ProductComponent implements OnInit {
   @Input() product: ProductType;

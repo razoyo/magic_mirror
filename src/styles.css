@@ -3,8 +3,31 @@
   src: url('./assets/PoiretOne-Regular.ttf');
   }
 
-body {
+html, body {
+  height: 100%;
+  }
+
+body, button, input {
   font-family: PoiretOne, sans-serif;
   background: #000000;
   color: #ffffff;
+  }
+
+button, input {
+  padding: 10px;
+  font-size: 2em;
+  margin: 0.25em;
+  min-width: 50px;
+}
+
+h1 {
+  font-size: 75px;
+  }
+
+h2 {
+  font-size: 50px;
+  }
+
+input {
+  border: 0;
   }

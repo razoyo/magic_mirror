@@ -21,14 +21,16 @@ export class WelcomeComponent implements OnInit {
     this.customerSessionStart.emit();
     }
   
-  customerRequestedScan() {
+  customerRequestedScan(e) {
     this.scanInputOpen = true;
   }
 
-  scanComplete() {
+  scanComplete(barcode) {
     this.scanInputOpen = false;
-    this.scanCode.emit(this.barcodeToFind);
+    this.scanCode.emit(barcode);
+    this.barcodeToFind = null;
     }
+
 
   constructor() { }
 
