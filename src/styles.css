@@ -3,6 +3,11 @@
   src: url('./assets/PoiretOne-Regular.ttf');
   }
 
+html {
+  transform: rotate(90deg) translateX(100%);
+  transform-origin: top right;
+  }
+
 html, body {
   height: 100%;
   }
@@ -11,6 +16,10 @@ body, button, input {
   font-family: PoiretOne, sans-serif;
   background: #000000;
   color: #ffffff;
+  }
+
+body {
+  overflow: hidden;
   }
 
 button, input {
