@@ -1,5 +1,31 @@
 # HatMirror
 
+## Changes for different angular-cli
+
+When I tried `ng serve`, I got this:
+```
+The package "angular-cli" has been deprecated and renamed to "@angular/cli".
+```
+I did this:
+```
+"npm uninstall --save-dev angular-cli"
+npm install --save-dev @angular/cli@1.2.7
+```
+Afterwards, `ng build` gave me this:
+```
+Environment configuration does not contain "environmentSource" entry.
+```
+
+I changed `angular-cli.json` from this:
+```
+"environments": {
+```
+to this:
+```
+"environmentSource": "environments/environment.ts",
+"environments": {
+```
+
 This project was generated with [angular-cli](https://github.com/angular/angular-cli) version 1.0.0-beta.24.
 
 ## Development server
