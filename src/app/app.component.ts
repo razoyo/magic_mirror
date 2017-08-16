@@ -1,14 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 
+import { PhotoHandlerService } from './photo-handler.service';
+
 import { ProductType } from './shared/product';
 
 import { stateInit } from './shared/stateInit';
 
 //mock data area
-let photos = [
-    "hat1.jpg",
-    "hat2.jpg"
-  ];
 
 let fake_product = {
   name: "First Hat Selected",
@@ -22,16 +20,17 @@ let fake_product = {
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+  styleUrls: ['./app.component.css'],
+  providers: [PhotoHandlerService],
 })
 
 export class AppComponent implements OnInit {
-  photos:string[] = photos;
   product: ProductType = fake_product;
   currState: any;
+  getPhoto: any;
 
   takePhoto() {
-    console.log("photo button pushed");
+    this.getPhoto().subscribe(photo => this.currState.photos.push(photo()));
     }
 
   sharePhotos(photos) {
@@ -47,6 +46,11 @@ export class AppComponent implements OnInit {
     console.log("barcode scan" , " " , barcode);
     this.currState.product_available = true;
     }
+
+  constructor (photoHandlerService: PhotoHandlerService) {
+    this.getPhoto = photoHandlerService.getPhoto;
+    }
+
 
   ngOnInit() {
     this.currState = Object.create(stateInit);   

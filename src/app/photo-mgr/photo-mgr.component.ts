@@ -22,6 +22,7 @@ export class PhotoMgrComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
+    console.log('photos ',this.photos);
   }
 
 }

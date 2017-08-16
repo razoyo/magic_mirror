@@ -11,7 +11,7 @@
   ></app-product>
 
   <app-photo-mgr
-    [photos]="photos"
+    [photos]="currState.photos"
     (takePhoto)="takePhoto()"
     (sharePhotos)="sharePhotos(photos)"
   ></app-photo-mgr>
