@@ -1,5 +1,20 @@
 # HatMirror
 
+This project has been updated to v1.2.7.  To see what version you are using:
+```
+ng -v
+```
+
+To build and execute after cloning the repository:
+```
+npm install
+ng build
+ng serve
+```
+When you look at http://localhost:4200/ it will look like this:
+
+![hatmirrorinterface](https://user-images.githubusercontent.com/1727761/29431863-1e6cec1c-835f-11e7-9469-468a40281668.png)
+
 This project was generated with [angular-cli](https://github.com/angular/angular-cli) version 1.0.0-beta.24.
 
 ## Development server
