@@ -9,8 +9,9 @@ import { SocketService} from '../socket.service';
 export class SyncComponent implements OnInit, OnDestroy {
 
   code = '';
+  feedback = '';
   problem = '';
-  connect = '';
+  phoneSocketId;
   problemObserver;
   phoneObserver;
 
@@ -21,12 +22,16 @@ export class SyncComponent implements OnInit, OnDestroy {
       .getProblems()
       .subscribe((data) => {
         this.problem = String(data);
+        this.phoneSocketId = null;
+        this.feedback = '';
       });
     
     this.phoneObserver = this.socketService
       .getConnect()
       .subscribe((data) => {
-        this.connect = String(data);
+        this.phoneSocketId = data;
+        this.feedback = 'The phone is connected';
+        this.problem = '';
       });
   }
 
