@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 
-import { PhotoHandlerService } from './photo-handler.service';
+import { PhotoHandlerService } from './shared/photo-handler.service';
 
 import { ProductType } from './shared/product';
 

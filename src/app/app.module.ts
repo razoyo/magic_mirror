@@ -10,7 +10,7 @@ import { ProductComponent } from './product/product.component';
 import { SyncComponent } from './sync/sync.component';
 import { WelcomeComponent } from './welcome/welcome.component';
 
-import { SocketService } from './socket.service';
+import { SocketService } from './shared/socket.service';
 import { stateInit } from './shared/stateInit';
 
 const config: SocketIoConfig = {

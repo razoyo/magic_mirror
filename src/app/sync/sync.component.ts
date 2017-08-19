@@ -1,5 +1,5 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { SocketService} from '../socket.service';
+import { SocketService} from '../shared/socket.service';
 
 @Component({
   selector: 'app-sync',
