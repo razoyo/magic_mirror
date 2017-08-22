@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 
 import { PhotoHandlerService } from './shared/photo-handler.service';
+import { ResetService } from './shared/reset.service';
 
 import { ProductType } from './shared/product';
 
@@ -17,12 +18,12 @@ let fake_product = {
            { name:'L', url_key: 'large'} ]
   };
 
-
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css'],
-  providers: [PhotoHandlerService],
+  providers: [ PhotoHandlerService,
+    ResetService ],
 })
 
 export class AppComponent implements OnInit {
@@ -30,7 +31,7 @@ export class AppComponent implements OnInit {
   currState: any;
 
   takePhoto() {
-    this.photoHandlerService.getPhoto().subscribe(photo => this.currState.photos.push(photo['url']));
+    this.photoHandlerService.getPhoto().subscribe(photo => this.currState.photos.push(photo['path']));
     }
 
   sharePhotos(photos) {
@@ -47,8 +48,14 @@ export class AppComponent implements OnInit {
     this.currState.product_available = true;
     }
 
-  constructor ( private photoHandlerService: PhotoHandlerService) {
+  reset() {
+    this.resetService.resetMirror();
+    this.currState = Object.create(stateInit);
     }
+
+  constructor ( 
+    private photoHandlerService: PhotoHandlerService, 
+    private resetService: ResetService) { }
 
 
   ngOnInit() {

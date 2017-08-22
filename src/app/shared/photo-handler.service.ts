@@ -18,7 +18,7 @@ export class PhotoHandlerService {
   //take a picture and return url to display on mirror
   getPhoto(): Observable<any> { 
     return this.http.post(
-	  '/api/picture/customer-photos',
+	  '/api/picture',
 	  this.body,
       { "headers": this.headers }
 	);

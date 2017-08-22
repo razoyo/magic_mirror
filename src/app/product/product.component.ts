@@ -10,10 +10,15 @@ import { ProductType } from '../shared/product';
 export class ProductComponent implements OnInit {
   @Input() product: ProductType;
   @Output() buyProduct = new EventEmitter<any>();
+  @Output() reset = new EventEmitter<any>();
 
   pushBuyProduct(url: string) {
     console.log('pushed by product ', url);
     this.buyProduct.emit(url);
+    }
+
+  mirrorReset() {
+    this.reset.emit();
     }
 
   constructor() { }
