@@ -1,19 +1,31 @@
 import { Injectable } from '@angular/core';
-import { Http } from '@angular/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs/Observable';
-import 'rxjs/add/observable/from';
-import 'rxjs/add/observable/of';
-import 'rxjs/add/operator/delay';
 
 @Injectable()
 export class PhotoHandlerService {
+  body = {
+	  "directory":"customer-photos",
+      "base_name":"hat-photo",
+      "options" : {
+	  	"rot":"180",
+ 		"quality":"100"
+	  }
+	};
+
+	headers = new HttpHeaders().set("Content-Type", "application/json");
 
   //take a picture and return url to display on mirror
-  getPhoto(): Observable<any> { return Observable.of(() => { return 'hat1.jpg' } ).delay(2000) };
+  getPhoto(): Observable<any> { 
+    return this.http.post(
+	  '/api/picture/customer-photos',
+	  this.body,
+      { "headers": this.headers }
+	);
+    }
 
   // share photos - send them to the mobile app
 
-
-  constructor( private http: Http ) { }
+  constructor( private http: HttpClient ) {}
 
 }

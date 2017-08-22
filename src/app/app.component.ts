@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Observable } from 'rxjs/Observable';
 
 import { PhotoHandlerService } from './shared/photo-handler.service';
 
@@ -27,10 +28,9 @@ let fake_product = {
 export class AppComponent implements OnInit {
   product: ProductType = fake_product;
   currState: any;
-  getPhoto: any;
 
   takePhoto() {
-    this.getPhoto().subscribe(photo => this.currState.photos.push(photo()));
+    this.photoHandlerService.getPhoto().subscribe(photo => this.currState.photos.push(photo['url']));
     }
 
   sharePhotos(photos) {
@@ -47,8 +47,7 @@ export class AppComponent implements OnInit {
     this.currState.product_available = true;
     }
 
-  constructor (photoHandlerService: PhotoHandlerService) {
-    this.getPhoto = photoHandlerService.getPhoto;
+  constructor ( private photoHandlerService: PhotoHandlerService) {
     }
 
 
