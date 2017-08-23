@@ -1,5 +1,6 @@
-<app-sync></app-sync>
+<!-- app-sync></app-sync -->
 <app-welcome *ngIf="!currState.product_available"
+  [customerPresent]="currState.customer_present"
   (customerSessionStart) = "customerSessionStart()"
   (scanCode) = "scanCode($event)"
 ></app-welcome>

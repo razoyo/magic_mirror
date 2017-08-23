@@ -45,7 +45,6 @@ export class AppComponent implements OnInit {
     }
 
   customerSessionStart() {
-    console.log("customer now present");
     this.currState.customer_present = true;
     }
 
@@ -57,6 +56,7 @@ export class AppComponent implements OnInit {
   reset() {
     this.resetService.resetMirror();
     this.currState = Object.create(stateInit);
+    this.customerSessionStart();
     }
 
   constructor ( 

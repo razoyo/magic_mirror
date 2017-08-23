@@ -1,9 +1,3 @@
-/*
-class sizeType {
-  name: string;
-  url_key: string;
-  }
-*/
 export class ProductType {
   name: string;
   price: number;
