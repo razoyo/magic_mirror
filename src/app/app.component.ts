@@ -31,7 +31,10 @@ export class AppComponent implements OnInit {
   currState: any;
 
   takePhoto() {
-    this.photoHandlerService.getPhoto().subscribe(photo => this.currState.photos.push(photo['path']));
+    this.photoHandlerService.getPhoto().subscribe(photo => {
+      console.log(photo);
+      this.currState.photos.push(photo['path']);
+      });
     }
 
   sharePhotos(photos) {
