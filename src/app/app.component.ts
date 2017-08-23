@@ -32,8 +32,11 @@ export class AppComponent implements OnInit {
 
   takePhoto() {
     this.photoHandlerService.getPhoto().subscribe(photo => {
-      console.log(photo);
-      this.currState.photos.push(photo['path']);
+      if (!this.currState.photos) { 
+          this.currState.photos = [ photo ] 
+        } else {
+          this.currState.photos.push(photo);
+        }
       });
     }
 

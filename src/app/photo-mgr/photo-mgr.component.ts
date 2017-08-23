@@ -1,5 +1,6 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
+import { CustomerPhoto } from '../shared/stateInit';
 
 @Component({
   selector: 'app-photo-mgr',
@@ -7,7 +8,7 @@ import { Observable } from 'rxjs/Observable';
   styleUrls: ['./photo-mgr.component.css', '../app.component.css']
 })
 export class PhotoMgrComponent implements OnInit {
-  @Input() photos:string[];
+  @Input() photos:CustomerPhoto[];
   @Output() sharePhotos = new EventEmitter<any>();
   @Output() takePhoto = new EventEmitter<any>();
 

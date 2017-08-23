@@ -8,8 +8,12 @@ export class PhotoHandlerService {
 	  "directory":"customer-photos",
       "base_name":"hat-photo",
       "options" : {
-	  	"rot":"180",
- 		"quality":"100"
+	  	"rot":"0",
+ 		"quality":"100",
+        "w":"750",
+        "h":"750",
+        "p":"670,100,500,500",
+        "vf":""
 	  }
 	};
 
