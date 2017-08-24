@@ -12,9 +12,9 @@ export class ProductComponent implements OnInit {
   @Output() buyProduct = new EventEmitter<any>();
   @Output() reset = new EventEmitter<any>();
 
-  pushBuyProduct(url: string) {
-    console.log('pushed by product ', url);
-    this.buyProduct.emit(url);
+  buyHat(name: string , url: string) {
+    console.log('pushed by product ', url, name);
+    this.buyProduct.emit({url, name });
     }
 
   mirrorReset() {

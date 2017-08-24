@@ -1,4 +1,4 @@
-export class ProductType {
+export interface ProductType {
   name: string;
   price: number;
   sizes: { name: string, url_key: string }[];

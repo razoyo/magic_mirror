@@ -17,16 +17,9 @@ export class WelcomeComponent implements OnInit {
     this.customerSessionStart.emit();
     }
 
-  customerRequestedScan(e) {
-    this.scanInputOpen = true;
-  }
-
   scanComplete(barcode) {
-    this.scanInputOpen = false;
     this.scanCode.emit(barcode);
-    this.barcodeToFind = null;
     }
-
 
   constructor() { }
 

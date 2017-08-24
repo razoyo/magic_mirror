@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 
+import { ProductLoaderService } from './shared/product-loader.service';  
 import { PhotoHandlerService } from './shared/photo-handler.service';
 import { ResetService } from './shared/reset.service';
 
@@ -10,25 +11,18 @@ import { stateInit } from './shared/stateInit';
 
 //mock data area
 
-let fake_product = {
-  name: "First Hat Selected",
-  price: 9.99,
-  sizes: [ { name:'S', url_key: 'small' },
-           { name:'M', url_key: 'medium' },
-           { name:'L', url_key: 'large'} ]
-  };
-
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css'],
   providers: [ PhotoHandlerService,
-    ResetService ],
+    ResetService,
+	ProductLoaderService ],
 })
 
 export class AppComponent implements OnInit {
-  product: ProductType = fake_product;
   currState: any;
+  productEndpoint:string;
 
   takePhoto() {
     this.photoHandlerService.getPhoto().subscribe(photo => {
@@ -49,9 +43,18 @@ export class AppComponent implements OnInit {
     }
 
   scanCode(barcode) {
-    console.log("barcode scan" , " " , barcode);
-    this.currState.product_available = true;
+	this.productLoaderService
+		.loadProduct(barcode, this.productEndpoint)
+		.subscribe(product => {
+            console.log('product api returns \n',product);
+			this.currState.product = product;
+			this.currState.product_available = true;
+		});
     }
+
+  buyProduct(product) {
+	console.log('buying product in a.c\n',product.name, product.url);
+	}
 
   reset() {
     this.resetService.resetMirror();
@@ -61,11 +64,13 @@ export class AppComponent implements OnInit {
 
   constructor ( 
     private photoHandlerService: PhotoHandlerService, 
+    private productLoaderService: ProductLoaderService, 
     private resetService: ResetService) { }
 
 
   ngOnInit() {
     this.currState = Object.create(stateInit);   
+	this.productEndpoint = this.currState.endpoint.get_product;
     }
 }
 

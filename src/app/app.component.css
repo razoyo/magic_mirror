@@ -18,18 +18,19 @@ div.main {
   justify-content: space-between;
   }
 
+.top, .bottom {
+  display: flex;
+  padding: 0 10px;
+  flex-direction: column;
+}
+
 .top {
   align-self: flex-start;
-  display: flex;
   flex: 1;
-  flex-direction: column;
   }
 
 .bottom {
   align-self: flex-end;
-  display: flex;
-  padding: 25px;
-  flex-direction: column;
   width: 80%;
   }
 

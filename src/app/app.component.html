@@ -8,8 +8,8 @@
 <div *ngIf="currState.product_available" class="main">
 
   <app-product
-    [product]="product"
-    (buyProduct)="buyProduct(url)"
+    [product]="currState.product"
+    (buyProduct)="buyProduct($event)"
     (reset)="reset()"
   ></app-product>
 
