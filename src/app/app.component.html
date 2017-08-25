@@ -1,4 +1,7 @@
-<!-- app-sync></app-sync -->
+<app-sync *ngIf="currState.sync_status ==='pairing'"
+  (connectionMade)="connectionMade($event)"
+></app-sync>
+<!-- img src="https://api.qrserver.com/v1/create-qr-code/?data=HelloWorld&size=400x400"/ -->
 <app-welcome *ngIf="!currState.product_available"
   [customerPresent]="currState.customer_present"
   (customerSessionStart) = "customerSessionStart()"

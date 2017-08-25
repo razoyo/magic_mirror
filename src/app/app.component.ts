@@ -52,8 +52,16 @@ export class AppComponent implements OnInit {
 		});
     }
 
+  connectionMade(data) {
+    this.currState.socketId = data;
+    this.currState.sync_status = "paired";
+    }
+
   buyProduct(product) {
 	console.log('buying product in a.c\n',product.name, product.url);
+    if (!(this.currState.sync_status === 'paired')) {
+        this.currState.sync_status = 'pairing';
+      }
 	}
 
   reset() {
