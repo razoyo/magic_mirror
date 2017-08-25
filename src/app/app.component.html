@@ -1,4 +1,22 @@
-<h1>Welcome to Hat Mirror Phone</h1>
-<app-sync></app-sync>
-<app-photo-share></app-photo-share>
-<app-purchase></app-purchase>
+<!-- app-sync></app-sync -->
+<app-welcome *ngIf="!currState.product_available"
+  [customerPresent]="currState.customer_present"
+  (customerSessionStart) = "customerSessionStart()"
+  (scanCode) = "scanCode($event)"
+></app-welcome>
+
+<div *ngIf="currState.product_available" class="main">
+
+  <app-product
+    [product]="currState.product"
+    (buyProduct)="buyProduct($event)"
+    (reset)="reset()"
+  ></app-product>
+
+  <app-photo-mgr
+    [photos]="currState.photos"
+    (takePhoto)="takePhoto()"
+    (sharePhotos)="sharePhotos(photos)"
+  ></app-photo-mgr>
+
+</div>

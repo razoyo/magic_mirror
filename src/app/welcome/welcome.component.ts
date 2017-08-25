@@ -6,31 +6,20 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
   styleUrls: ['./welcome.component.css']
 })
 export class WelcomeComponent implements OnInit {
+  @Input() customerPresent: boolean;
   @Output() customerSessionStart = new EventEmitter<any>();
   @Output() scanCode = new EventEmitter<number>();
-  customerPresent: boolean = false;
 
   scanInputOpen: boolean = false;
   barcodeToFind: number;
 
   customerPushedButton() {
-    this.customerPresent = true;
-    }
-
-  customerApproachesMirror() {
     this.customerSessionStart.emit();
     }
-  
-  customerRequestedScan(e) {
-    this.scanInputOpen = true;
-  }
 
   scanComplete(barcode) {
-    this.scanInputOpen = false;
     this.scanCode.emit(barcode);
-    this.barcodeToFind = null;
     }
-
 
   constructor() { }
 
