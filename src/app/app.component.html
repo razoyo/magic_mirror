@@ -1,19 +1,4 @@
-<app-welcome *ngIf="!currState.product_available"
-  (customerSessionStart) = "customerSessionStart()"
-  (scanCode) = "scanCode($event)"
-></app-welcome>
-
-<div *ngIf="currState.product_available" class="main">
-
-  <app-product
-    [product]="product"
-    (buyProduct)="buyProduct(url)"
-  ></app-product>
-
-  <app-photo-mgr
-    [photos]="currState.photos"
-    (takePhoto)="takePhoto()"
-    (sharePhotos)="sharePhotos(photos)"
-  ></app-photo-mgr>
-
-</div>
+<h1>Welcome to Hat Mirror Phone</h1>
+<app-sync></app-sync>
+<app-photo-share></app-photo-share>
+<app-purchase></app-purchase>

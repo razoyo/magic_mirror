@@ -1,6 +1,6 @@
 import { browser, element, by } from 'protractor';
 
-export class HatMirrorPage {
+export class MmWebAppPage {
   navigateTo() {
     return browser.get('/');
   }
