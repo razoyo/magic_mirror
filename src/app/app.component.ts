@@ -46,10 +46,9 @@ export class AppComponent implements OnInit {
 	this.productLoaderService
 		.loadProduct(barcode, this.productEndpoint)
 		.subscribe(product => {
-            console.log('product api returns \n',product);
             if (product.name) {
               this.currState.product.data = product;
-              console.log("cspd",this.currState.product.data);
+              this.currState.post_sync_action = 'purchase';
             } else {
               this.currState.product.error = true;  
             }

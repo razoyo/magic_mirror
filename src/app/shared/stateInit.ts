@@ -9,6 +9,11 @@ enum syncStatuses {
   'paired'
   }
 
+enum postSyncActions {
+  'purchase',
+  'share'
+  }
+
 interface stateStore {
   customer_present: boolean;
   product: { 
@@ -21,6 +26,7 @@ interface stateStore {
   sync_status: syncStatuses;
   socket_url: string;
   socketId?: string;
+  post_sync_action?: postSyncActions;
   }
 
 export const stateInit = {
