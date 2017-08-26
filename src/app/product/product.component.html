@@ -2,14 +2,14 @@
   <h2>{{product.name}}</h2><h2>{{product.price | currency:'USD':true}}</h2>
 </div>
 <div class="bottom">
-  <h3>Touch to Purchase on Phone</h3>
+  <h3>Purchase on Phone</h3>
   <div *ngIf="!product.sizes">
     <button (click)="buyHat(product.name, product.product_url)">Buy Me</button>
   </div>
   <div *ngIf="product.sizes">
 	<button *ngFor="let item of product.sizes"
-	  (click)="buyHat(item.name, item.product_url)"
-    >{{item.name}}
+	  (click)="buyHat(product.name, product.product_url)"
+    >Buy {{item}}
     </button>
   </div>
   <div><button (click)="mirrorReset()">New Hat / Leave</button></div>

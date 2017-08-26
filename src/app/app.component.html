@@ -2,16 +2,16 @@
   (connectionMade)="connectionMade($event)"
 ></app-sync>
 <!-- img src="https://api.qrserver.com/v1/create-qr-code/?data=HelloWorld&size=400x400"/ -->
-<app-welcome *ngIf="!currState.product_available"
+<app-welcome *ngIf="!currState.product.data.name"
   [customerPresent]="currState.customer_present"
   (customerSessionStart) = "customerSessionStart()"
   (scanCode) = "scanCode($event)"
 ></app-welcome>
 
-<div *ngIf="currState.product_available" class="main">
+<div *ngIf="currState.product.data.name" class="main">
 
   <app-product
-    [product]="currState.product"
+    [product]="currState.product.data"
     (buyProduct)="buyProduct($event)"
     (reset)="reset()"
   ></app-product>
