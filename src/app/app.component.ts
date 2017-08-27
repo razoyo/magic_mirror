@@ -50,7 +50,7 @@ export class AppComponent implements OnInit {
               this.currState.product.data = product;
               this.currState.post_sync_action = 'purchase';
             } else {
-              this.currState.product.error = true;  
+              this.currState.product.data.error = true;  
             }
 		});
     }

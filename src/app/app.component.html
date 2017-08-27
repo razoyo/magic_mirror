@@ -2,6 +2,7 @@
   (connectionMade)="connectionMade($event)"
 ></app-sync>
 <app-welcome *ngIf="!currState.product.data.name"
+  [product]="currState.product.data"
   [customerPresent]="currState.customer_present"
   (customerSessionStart) = "customerSessionStart()"
   (scanCode) = "scanCode($event)"
