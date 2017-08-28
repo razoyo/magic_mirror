@@ -19,9 +19,10 @@ let mock_product = {
 export class ProductLoaderService {
 
   loadProduct(barcode, endpoint): Observable<any> {
-	//return this.http.get(endpoint.concat("/", barcode));    
-	return Observable.of( mock_product )
-	.delay(1000);
+    console.log("http://".concat(endpoint,"/", barcode));
+	return this.http.get("http://".concat(endpoint,"/", barcode));    
+	//return Observable.of( mock_product )
+	//.delay(1000);
 	}
 
 

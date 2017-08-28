@@ -1,14 +1,17 @@
-<!-- app-sync></app-sync -->
-<app-welcome *ngIf="!currState.product_available"
+<app-sync *ngIf="currState.sync_status ==='pairing'"
+  (connectionMade)="connectionMade($event)"
+></app-sync>
+<app-welcome *ngIf="!currState.product.data.name"
+  [product]="currState.product.data"
   [customerPresent]="currState.customer_present"
   (customerSessionStart) = "customerSessionStart()"
   (scanCode) = "scanCode($event)"
 ></app-welcome>
 
-<div *ngIf="currState.product_available" class="main">
+<div *ngIf="currState.product.data.name" class="main">
 
   <app-product
-    [product]="currState.product"
+    [product]="currState.product.data"
     (buyProduct)="buyProduct($event)"
     (reset)="reset()"
   ></app-product>

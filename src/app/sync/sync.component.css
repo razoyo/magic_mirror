@@ -1,0 +1,17 @@
+.sync-screen {
+  height: 100vw;
+  width: 100vh;
+  background: #ffffff;
+  text-align: center;
+  padding: 100px;
+  color: #000000;
+  }
+
+.sync-screen > div {
+  padding: 100px;
+  font-size: 40px;
+  }
+
+.code {
+  color: #ff0000;
+  }

@@ -46,14 +46,25 @@ export class AppComponent implements OnInit {
 	this.productLoaderService
 		.loadProduct(barcode, this.productEndpoint)
 		.subscribe(product => {
-            console.log('product api returns \n',product);
-			this.currState.product = product;
-			this.currState.product_available = true;
+            if (product.name) {
+              this.currState.product.data = product;
+              this.currState.post_sync_action = 'purchase';
+            } else {
+              this.currState.product.data.error = true;  
+            }
 		});
+    }
+
+  connectionMade(data) {
+    this.currState.socketId = data;
+    this.currState.sync_status = "paired";
     }
 
   buyProduct(product) {
 	console.log('buying product in a.c\n',product.name, product.url);
+    if (!(this.currState.sync_status === 'paired')) {
+        this.currState.sync_status = 'pairing';
+      }
 	}
 
   reset() {
