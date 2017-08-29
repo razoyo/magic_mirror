@@ -6,6 +6,7 @@ import { SocketIoModule, SocketIoConfig } from 'ngx-socket-io';
 
 import { AppComponent } from './app.component';
 import { PhotoMgrComponent } from './photo-mgr/photo-mgr.component';
+import { PhotoShareComponent } from './photo-share/photo-share.component';
 import { ProductComponent } from './product/product.component';
 import { SyncComponent } from './sync/sync.component';
 import { WelcomeComponent } from './welcome/welcome.component';
@@ -23,6 +24,7 @@ const config: SocketIoConfig = {
     AppComponent,
     ProductComponent,
     PhotoMgrComponent,
+    PhotoShareComponent,
     WelcomeComponent,
     SyncComponent
   ],

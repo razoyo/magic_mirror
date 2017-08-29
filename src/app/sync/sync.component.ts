@@ -32,6 +32,7 @@ export class SyncComponent implements OnInit, OnDestroy {
       .subscribe((data) => {
         this.connectionMade.emit(data);
         this.phoneSocketId = data;
+        this.socketService.setPhoneSocketId(this.phoneSocketId);
         this.feedback = 'The phone is connected';
         this.problem = '';
       });
