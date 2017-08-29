@@ -1,21 +1,15 @@
-# HatMirror
+# MmWebApp
 
-This project has been updated to v1.2.7.  To see what version you are using:
-```
-ng -v
-```
-
-To build and execute after cloning the repository:
+To build after cloning the repository:
 ```
 npm install
 ng build
 ng serve
 ```
-When you look at http://localhost:4200/ it will look like this:
+When you look at:  http://localhost:4200/
 
-![hatmirrorinterface](https://user-images.githubusercontent.com/1727761/29431863-1e6cec1c-835f-11e7-9469-468a40281668.png)
-
-This project was generated with [angular-cli](https://github.com/angular/angular-cli) version 1.0.0-beta.24.
+It will look like this:
+![hatmirrorphoneinterface](https://user-images.githubusercontent.com/1727761/29428726-d221466a-8353-11e7-8631-a9e9976fd3fc.png)
 
 ## Development server
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.

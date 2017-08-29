@@ -1,10 +1,10 @@
-import { HatMirrorPage } from './app.po';
+import { MmWebAppPage } from './app.po';
 
-describe('hat-mirror App', function() {
-  let page: HatMirrorPage;
+describe('mm-web-app App', function() {
+  let page: MmWebAppPage;
 
   beforeEach(() => {
-    page = new HatMirrorPage();
+    page = new MmWebAppPage();
   });
 
   it('should display message saying app works', () => {

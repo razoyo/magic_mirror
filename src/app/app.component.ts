@@ -81,7 +81,6 @@ export class AppComponent implements OnInit {
 
   ngOnInit() {
     this.currState = Object.create(stateInit);   
-	this.productEndpoint = this.currState.endpoint.get_product;
+	  this.productEndpoint = this.currState.endpoint.get_product;
     }
 }
-
