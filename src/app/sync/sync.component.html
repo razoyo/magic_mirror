@@ -4,7 +4,10 @@
     <span *ngIf="!code">Sync To Phone</span>
   </button>
   <div *ngIf="code">
-    <img src="https://api.qrserver.com/v1/create-qr-code/?data=http://hats.razoyo.com/?code={{code}}&size=400x400"/>
+    <img src=
+      `https://api.qrserver.com/v1/create-qr-code/?data='http://
+      {{sync_to_phone}}
+      /?code={{code}}&size=400x400'/>`
     <p>Scan this QR code with your phone or go to hats.razoyo.com on your phone and enter <span class="code">{{ code }}</span></p>
   </div>
 </div>

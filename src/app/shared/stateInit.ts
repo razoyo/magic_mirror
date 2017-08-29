@@ -33,7 +33,8 @@ export const stateInit = {
   customer_present: false,
   product : { data : {} },
   endpoint: {
-	  get_product: 'ec2-54-221-218-6.compute-1.amazonaws.com:3000/api/product' 
+	  get_product: 'ec2-54-221-218-6.compute-1.amazonaws.com:3000/api/product',
+	  sync_to_phone: 'ec2-54-221-218-6.compute-1.amazonaws.com:3000' 
 	},
   sync_status: 'unpaired',
   socket_url: 'ec2-54-221-218-6.compute-1.amazonaws.com:4000',
