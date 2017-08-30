@@ -7,7 +7,7 @@ import { SocketService } from '../shared/socket.service';
   styleUrls: ['./sync.component.css']
 })
 export class SyncComponent implements OnInit, OnDestroy {
-
+  @Input() syncToPhone:string;
   @Output() connectionMade = new EventEmitter<any>();
   code = '';
   feedback = '';

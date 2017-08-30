@@ -1,4 +1,5 @@
 <app-sync *ngIf="currState.sync_status ==='pairing'"
+  [syncToPhone]="currState.endpoint.sync_to_phone"
   (connectionMade)="connectionMade($event)"
 ></app-sync>
 <app-welcome *ngIf="!currState.product.data.name"

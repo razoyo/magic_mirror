@@ -22,7 +22,10 @@ interface stateStore {
     sizes?: string[];
     product_url?: string;
   };
-  endpoint: { get_product: string };  
+  endpoint: { 
+    get_product: string;  
+    sync_to_phone: any;
+  };
   sync_status: syncStatuses;
   socket_url: string;
   socketId?: string;
