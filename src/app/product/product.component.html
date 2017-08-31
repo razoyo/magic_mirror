@@ -2,9 +2,12 @@
   <h2>{{product.name}}</h2><h2>{{product.price | currency:'USD':true}}</h2>
 </div>
 <div class="bottom">
-  <h3>Purchase on Phone</h3>
+  <h3 *ngIf="syncStatus!='paired'">Purchase on Phone</h3>
   <div *ngIf="!product.sizes">
-    <button (click)="buyHat(product.name, product.product_url)">Buy Me</button>
+    <button *ngIf="syncStatus!='paired'" (click)="buyHat(product.name, product.product_url)">
+      Buy Me
+    </button>
+    <h3 *ngIf="syncStatus==='paired'">See Phone to Purchase</h3>
   </div>
   <div *ngIf="product.sizes">
 	<button *ngFor="let item of product.sizes"

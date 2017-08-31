@@ -34,7 +34,7 @@ interface stateStore {
 
 export const stateInit = {
   customer_present: false,
-  product : { data : {} },
+  product: {},
   endpoint: {
 	  get_product: 'ec2-54-221-218-6.compute-1.amazonaws.com:3000/api/product',
 	  sync_to_phone: 'ec2-54-221-218-6.compute-1.amazonaws.com:3000' 

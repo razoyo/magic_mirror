@@ -2,17 +2,18 @@
   [syncToPhone]="currState.endpoint.sync_to_phone"
   (connectionMade)="connectionMade($event)"
 ></app-sync>
-<app-welcome *ngIf="!currState.product.data.name"
-  [product]="currState.product.data"
+<app-welcome *ngIf="!currState.product.name"
+  [product]="currState.product"
   [customerPresent]="currState.customer_present"
   (customerSessionStart) = "customerSessionStart()"
   (scanCode) = "scanCode($event)"
 ></app-welcome>
 
-<div *ngIf="currState.product.data.name" class="main">
+<div *ngIf="currState.product.name" class="main">
 
   <app-product
-    [product]="currState.product.data"
+    [product]="currState.product"
+    [syncStatus]="currState.sync_status"
     (buyProduct)="buyProduct($event)"
     (reset)="reset()"
   ></app-product>

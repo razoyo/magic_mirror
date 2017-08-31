@@ -9,6 +9,7 @@ import { ProductType } from '../shared/product';
 })
 export class ProductComponent implements OnInit {
   @Input() product: ProductType;
+  @Input() syncStatus: string;
   @Output() buyProduct = new EventEmitter<any>();
   @Output() reset = new EventEmitter<any>();
 

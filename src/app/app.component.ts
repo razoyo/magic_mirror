@@ -47,10 +47,10 @@ export class AppComponent implements OnInit {
 		.loadProduct(barcode, this.productEndpoint)
 		.subscribe(product => {
             if (product.name) {
-              this.currState.product.data = product;
+              this.currState.product = product;
               this.currState.post_sync_action = 'purchase';
             } else {
-              this.currState.product.data.error = true;  
+              this.currState.product.error = true;  
             }
 		});
     }
@@ -68,8 +68,10 @@ export class AppComponent implements OnInit {
 	}
 
   reset() {
-    this.resetService.resetMirror();
+    console.log('state before init = \n',this.currState);
+    this.resetService.resetMirror(this.currState.photos);
     this.currState = Object.create(stateInit);
+    console.log('state = \n',this.currState);
     this.customerSessionStart();
     }
 
@@ -81,6 +83,6 @@ export class AppComponent implements OnInit {
 
   ngOnInit() {
     this.currState = Object.create(stateInit);   
-	  this.productEndpoint = this.currState.endpoint.get_product;
+    this.productEndpoint = this.currState.endpoint.get_product;
     }
 }
