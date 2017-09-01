@@ -4,14 +4,12 @@
 <div class="bottom">
   <h3 *ngIf="syncStatus!='paired'">Purchase on Phone</h3>
   <div *ngIf="!product.sizes">
-    <button *ngIf="syncStatus!='paired'" (click)="buyHat(product.name, product.product_url)">
-      Buy Me
-    </button>
+    <button *ngIf="syncStatus!='paired'" (click)="buyHat()">Buy Me</button>
     <h3 *ngIf="syncStatus==='paired'">See Phone to Purchase</h3>
   </div>
   <div *ngIf="product.sizes">
 	<button *ngFor="let item of product.sizes"
-	  (click)="buyHat(product.name, product.product_url)"
+	  (click)="buyHat()"
     >Buy {{item}}
     </button>
   </div>

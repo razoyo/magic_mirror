@@ -4,12 +4,11 @@ import { Observable } from 'rxjs/Observable';
 import { ProductLoaderService } from './shared/product-loader.service';  
 import { PhotoHandlerService } from './shared/photo-handler.service';
 import { ResetService } from './shared/reset.service';
+import { SocketService } from './shared/socket.service';
+import { SyncActionsService } from './shared/sync-actions.service';
 
 import { ProductType } from './shared/product';
-
 import { stateInit } from './shared/stateInit';
-
-//mock data area
 
 @Component({
   selector: 'app-root',
@@ -17,7 +16,9 @@ import { stateInit } from './shared/stateInit';
   styleUrls: ['./app.component.css'],
   providers: [ PhotoHandlerService,
     ResetService,
-	ProductLoaderService ],
+	ProductLoaderService,
+	SyncActionsService, 
+    SocketService ],
 })
 
 export class AppComponent implements OnInit {
@@ -34,10 +35,6 @@ export class AppComponent implements OnInit {
       });
     }
 
-  sharePhotos(photos) {
-    console.log("share button pushed ", photos);
-    }
-
   customerSessionStart() {
     this.currState.customer_present = true;
     }
@@ -48,7 +45,7 @@ export class AppComponent implements OnInit {
 		.subscribe(product => {
             if (product.name) {
               this.currState.product = product;
-              this.currState.post_sync_action = 'purchase';
+			  this.currState.product.error = false;
             } else {
               this.currState.product.error = true;  
             }
@@ -58,14 +55,22 @@ export class AppComponent implements OnInit {
   connectionMade(data) {
     this.currState.socketId = data;
     this.currState.sync_status = "paired";
+	this.syncActionsService[this.currState.post_sync_action](this.currState);
     }
 
-  buyProduct(product) {
-	console.log('buying product in a.c\n',product.name, product.url);
-    if (!(this.currState.sync_status === 'paired')) {
+  buyProduct() {
+    if (this.currState.sync_status != 'paired') {
         this.currState.sync_status = 'pairing';
       }
+    this.currState.post_sync_action = 'purchase'; 
 	}
+
+  sharePhotos() {
+    if (this.currState.sync_status != 'paired') {
+        this.currState.sync_status = 'pairing';
+      }
+    this.currState.post_sync_action = 'share'; 
+    }
 
   reset() {
     console.log('state before init = \n',this.currState);
@@ -78,11 +83,13 @@ export class AppComponent implements OnInit {
   constructor ( 
     private photoHandlerService: PhotoHandlerService, 
     private productLoaderService: ProductLoaderService, 
+    private socketService: SocketService, 
+    private syncActionsService: SyncActionsService, 
     private resetService: ResetService) { }
-
 
   ngOnInit() {
     this.currState = Object.create(stateInit);   
+    this.currState.socketId = this.socketService.getPhoneSocketId();
     this.productEndpoint = this.currState.endpoint.get_product;
     }
 }

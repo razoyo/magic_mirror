@@ -27,6 +27,7 @@ export class WelcomeComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
+    this.product.error = false;
   }
 
 }

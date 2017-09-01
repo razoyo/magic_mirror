@@ -1,5 +1,6 @@
 import { Component, OnInit, OnDestroy, Output, Input, EventEmitter } from '@angular/core';
 import { SocketService } from '../shared/socket.service';
+import { ProductType } from '../shared/product';
 
 @Component({
   selector: 'app-sync',
@@ -8,6 +9,8 @@ import { SocketService } from '../shared/socket.service';
 })
 export class SyncComponent implements OnInit, OnDestroy {
   @Input() syncToPhone:string;
+  @Input() syncStatus:string;
+  @Input() product:ProductType;
   @Output() connectionMade = new EventEmitter<any>();
   code = '';
   feedback = '';
@@ -15,6 +18,7 @@ export class SyncComponent implements OnInit, OnDestroy {
   phoneSocketId;
   problemObserver;
   phoneObserver;
+  postSyncAction: any = {};
 
   constructor(private socketService: SocketService) { }
 
@@ -36,7 +40,8 @@ export class SyncComponent implements OnInit, OnDestroy {
         this.feedback = 'The phone is connected';
         this.problem = '';
       });
-  }
+
+	}
 
   getCode() {
     this.code = this.socketService.getCode();
@@ -45,6 +50,6 @@ export class SyncComponent implements OnInit, OnDestroy {
 
   ngOnDestroy() {
     this.problemObserver.unsubscribe();
-    // this.phoneObserver.unsubscribe();
+    this.phoneObserver.unsubscribe();
   }
 }

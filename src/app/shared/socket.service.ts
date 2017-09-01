@@ -42,6 +42,7 @@ export class SocketService {
       data: data,
       message: message
     };
+	console.log(obj);
     this.socket.emit('broadcast', obj);
   }
 

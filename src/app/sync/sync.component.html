@@ -1,4 +1,4 @@
-<div class="sync-screen">
+<div *ngIf="syncStatus ==='pairing'" class="sync-screen">
   <button (click)="getCode()">
     <span *ngIf="code">Try Again</span>
     <span *ngIf="!code">Sync To Phone</span>
