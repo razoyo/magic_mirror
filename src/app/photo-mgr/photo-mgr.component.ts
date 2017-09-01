@@ -17,13 +17,12 @@ export class PhotoMgrComponent implements OnInit {
     }
 
   pushSharePhotos() {
-    this.sharePhotos.emit(this.photos);
+    this.sharePhotos.emit();
     }
 
   constructor() { }
 
   ngOnInit() {
-    console.log('photos ',this.photos);
   }
 
 }

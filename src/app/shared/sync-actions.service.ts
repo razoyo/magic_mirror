@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 import { SocketService } from './socket.service';
 
@@ -18,21 +19,28 @@ export class SyncActionsService {
         console.log('phone not paired');
       }
     }
-  
+
+  headers = new HttpHeaders().set("Content-Type","application/json");
+
   share(state) {
-    console.log('sharing');
-    if (state.socketId) {
-      this.socketService.sendSocketMessage(
-        state.socketId,
-        'newPictures',
-        state.share
-      );  
-      } else {
-        console.log('phone not paired');
-      }
+    this.http.put('/api/picture/customer-photos', null)
+      .subscribe(data => {
+         console.log('sharing');
+         if (state.socketId) {
+            this.socketService.sendSocketMessage(
+            state.socketId,
+            'newPictures',
+             data['files']
+            );  
+        } else {
+            console.log('phone not paired');
+        }
+      });
     }
 
 
-  constructor( private socketService: SocketService ) { }
+  constructor( 
+      private socketService: SocketService,
+      private http: HttpClient ) { }
 
 }
