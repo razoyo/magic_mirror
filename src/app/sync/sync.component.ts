@@ -45,6 +45,6 @@ export class SyncComponent implements OnInit, OnDestroy {
 
   ngOnDestroy() {
     this.problemObserver.unsubscribe();
-    this.phoneObserver.unsubscribe();
+    // this.phoneObserver.unsubscribe();
   }
 }
