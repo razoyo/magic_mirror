@@ -19,7 +19,7 @@ Run `ng build` to build the project. The build artifacts will be stored in the `
 We copied the contents of the dist/ directory to the mm-server/dist directory, which served the application.
 
 ## Production environment
-We used Chromium, which has a kiosk mode, to display the Magic Mirror.  The kiosk mode runs a browswer without the status bar, address bar, etc....just the display window.  After starting the [mm-server](https://github.com/amnotafraid/mm-server) on the Raspberry Pi, we used this command to display the Magic Mirror in Chromium:
+We used Chromium, which has a kiosk mode, to display the Magic Mirror.  The kiosk mode runs a browser without the status bar, address bar, etc....just the display window.  After starting the [mm-server](https://github.com/amnotafraid/mm-server) on the Raspberry Pi, we used this command to display the Magic Mirror in Chromium:
 ```
 chromium-browser --kiosk localhost:3000
 ```
