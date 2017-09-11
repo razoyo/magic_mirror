@@ -1,4 +1,6 @@
-# MmWebApp
+# Magic Mirror
+
+This is an Angular4 App.
 
 To build after cloning the repository:
 ```
