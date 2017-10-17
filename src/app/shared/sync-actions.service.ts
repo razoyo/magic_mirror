@@ -15,6 +15,7 @@ export class SyncActionsService {
         { 'name':state.product.name,
           'url':state.product.product_url }
         );  
+       state.product.sentToPhone = true;
       } else {
         console.log('phone not paired');
       }

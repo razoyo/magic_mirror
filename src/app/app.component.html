@@ -3,6 +3,7 @@
   [syncStatus]="currState.sync_status"
   [syncToPhone]="currState.endpoint.sync_to_phone"
   (connectionMade)="connectionMade($event)"
+  (connectionLost)="connectionLost()"
 ></app-sync>
 <app-welcome *ngIf="!currState.product.name"
   [product]="currState.product"

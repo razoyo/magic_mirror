@@ -11,6 +11,7 @@ h3 {
 
 .main {
   height: 100%;
+  padding: 0 20px;
   }
 
 div.main {
@@ -31,7 +32,6 @@ div.main {
 
 .bottom {
   align-self: flex-end;
-  width: 80%;
   }
 
 .error {

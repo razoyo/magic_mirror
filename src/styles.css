@@ -38,7 +38,7 @@ button, input {
   padding: 10px;
   font-size: 2em;
   margin: 0.25em;
-  min-width: 50px;
+  width: 275px;
 }
 
 h1 {

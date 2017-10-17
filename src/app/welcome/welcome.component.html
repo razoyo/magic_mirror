@@ -1,6 +1,5 @@
-<button *ngIf="!customerPresent" (click)="customerPushedButton()">Start</button>
-<div *ngIf="customerPresent">
-  <h1>Welcome to Hat Manager</h1>
+<div class="top">
+  <h1>Welcome to Hat Mirror</h1>
   <h2 *ngIf="!product.error">Scan a UPC Code to Shop or Share</h2>
   <h2 *ngIf="product.error" class="error">Unable to find product, please try again.</h2>
   <input [(ngModel)]="barcodeToFind" (keyup.enter)="scanComplete(barcodeToFind)" placeholder="Touch Here To Scan">

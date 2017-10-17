@@ -1,10 +1,7 @@
-<div  *ngIf="photos" class="top">
-  <ul>
-  <li *ngFor="let photo of photos"><img src="assets/customer-photos/{{photo.directory}}/{{photo.name}}"></li>
+<div class="top">
+  <ul *ngIf="photos" >
+    <li *ngFor="let photo of photos"><img src="assets/customer-photos/{{photo.directory}}/{{photo.name}}"></li>
   </ul>
-</div>
-
-<div class="bottom share-buttons">
-  <button (click)="pushTakePhoto()">Take Photo</button>
+  <button (click)="pushTakePhoto()">Take <span *ngIf="photos">Another </span>Photo</button>
   <button *ngIf="photos" (click)="pushSharePhotos()">Share Photos</button>
 </div>

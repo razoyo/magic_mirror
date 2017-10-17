@@ -1,11 +1,12 @@
 <div class="top">
   <h2>{{product.name}}</h2><h2>{{product.price | currency:'USD':true}}</h2>
+  <!-- img src="{{product.picture_url}}"  waiting for object to be fixed -->
 </div>
 <div class="bottom">
-  <h3 *ngIf="syncStatus!='paired'">Purchase on Phone</h3>
+  <h3 *ngIf="!product.sentToPhone">Send To Phone To Purchase</h3>
   <div *ngIf="!product.sizes">
-    <button *ngIf="syncStatus!='paired'" (click)="buyHat()">Buy Me</button>
-    <h3 *ngIf="syncStatus==='paired'">See Phone to Purchase</h3>
+    <button *ngIf="!product.sentToPhone" (click)="buyHat()">Buy Me</button>
+    <h3 *ngIf="product.sentToPhone">See Phone to Purchase</h3>
   </div>
   <div *ngIf="product.sizes">
 	<button *ngFor="let item of product.sizes"

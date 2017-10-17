@@ -58,25 +58,33 @@ export class AppComponent implements OnInit {
 	this.syncActionsService[this.currState.post_sync_action](this.currState);
     }
 
+  connectionLost() {
+	this.currState.sync_status = 'unpaired';
+	this.currState.socketId = null;
+    this.currState.product.sentToPhone = false;
+	}
+
   buyProduct() {
     if (this.currState.sync_status != 'paired') {
         this.currState.sync_status = 'pairing';
-      }
+      } else {
+		this.syncActionsService.purchase(this.currState);
+	  }
     this.currState.post_sync_action = 'purchase'; 
 	}
 
   sharePhotos() {
     if (this.currState.sync_status != 'paired') {
         this.currState.sync_status = 'pairing';
-      }
+      } else {
+		this.syncActionsService.share(this.currState);
+	  }
     this.currState.post_sync_action = 'share'; 
     }
 
   reset() {
-    console.log('state before init = \n',this.currState);
     this.resetService.resetMirror(this.currState.photos);
     this.currState = Object.create(stateInit);
-    console.log('state = \n',this.currState);
     this.customerSessionStart();
     }
 
@@ -91,5 +99,6 @@ export class AppComponent implements OnInit {
     this.currState = Object.create(stateInit);   
     this.currState.socketId = this.socketService.getPhoneSocketId();
     this.productEndpoint = this.currState.endpoint.get_product;
+	this.reset();
     }
 }

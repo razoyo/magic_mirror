@@ -12,6 +12,7 @@ export class SyncComponent implements OnInit, OnDestroy {
   @Input() syncStatus:string;
   @Input() product:ProductType;
   @Output() connectionMade = new EventEmitter<any>();
+  @Output() connectionLost = new EventEmitter<any>();
   code = '';
   feedback = '';
   problem = '';
@@ -26,8 +27,11 @@ export class SyncComponent implements OnInit, OnDestroy {
     this.problemObserver = this.socketService
       .getProblems()
       .subscribe((data) => {
+        this.connectionLost.emit();
         this.problem = String(data);
         this.phoneSocketId = null;
+		this.code = null;
+		console.log('Connection Lost ',this.problem);
         this.feedback = '';
       });
     
